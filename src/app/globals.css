@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Fonts */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-fredoka);
+
+  /* Base */
+  --color-background: #fafafa;
+  --color-foreground: #1a1a2e;
+  --color-muted: #6b7280;
+
+  /* Surfaces */
+  --color-surface: #ffffff;
+  --color-border: #e5e7eb;
+
+  /* Accent */
+  --color-accent: #6c5ce7;
+  --color-accent-hover: #5a4bd1;
+  --color-accent-soft: #f0edff;
+
+  /* Category colors — game-category-specific badges & accents */
+  --color-cat-action: #e17055;
+  --color-cat-puzzle: #00b894;
+  --color-cat-arcade: #fdcb6e;
+  --color-cat-board: #74b9ff;
+  --color-cat-memory: #a29bfe;
+  --color-cat-typing: #fd79a8;
+  --color-cat-casual: #55efc4;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
