@@ -32,14 +32,11 @@ export function GameCard({ game }: { game: Game }) {
         </span>
       </div>
 
-      {/* Info */}
-      <div className="p-4">
-        <h3 className="font-display text-base font-semibold text-foreground group-hover:text-accent transition-colors">
+      {/* Title */}
+      <div className="p-3">
+        <h3 className="font-display text-sm font-semibold text-foreground group-hover:text-accent transition-colors text-center">
           {game.title}
         </h3>
-        <p className="mt-1 text-sm text-muted line-clamp-2">
-          {game.description}
-        </p>
       </div>
     </Link>
   );
