@@ -1,14 +1,12 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Game } from "@/lib/games";
 
-const CATEGORY_COLORS: Record<string, string> = {
-  action: "bg-cat-action",
-  puzzle: "bg-cat-puzzle",
-  arcade: "bg-cat-arcade",
-  board: "bg-cat-board",
-  memory: "bg-cat-memory",
-  typing: "bg-cat-typing",
-  casual: "bg-cat-casual",
+const ASPECT_CLASSES: Record<string, string> = {
+  "1/1": "aspect-square",
+  "4/3": "aspect-[4/3]",
+  "16/9": "aspect-video",
+  "9/16": "aspect-[9/16]",
 };
 
 export function GameCard({ game }: { game: Game }) {
@@ -19,13 +17,17 @@ export function GameCard({ game }: { game: Game }) {
     >
       {/* Thumbnail */}
       <div
-        className={`relative w-full ${game.aspectRatio === "9/16" ? "aspect-[9/16]" : game.aspectRatio === "1/1" ? "aspect-square" : game.aspectRatio === "16/9" ? "aspect-video" : "aspect-[4/3]"} ${CATEGORY_COLORS[game.category] || "bg-accent-soft"} flex items-center justify-center`}
+        className={`relative w-full ${ASPECT_CLASSES[game.aspectRatio] || "aspect-[4/3]"} bg-zinc-900`}
       >
-        <span className="text-3xl sm:text-4xl font-display font-bold text-white/80 select-none">
-          {game.title.charAt(0)}
-        </span>
+        <Image
+          src={game.thumbnail}
+          alt={game.title}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          className="object-cover group-hover:scale-105 transition-transform duration-300"
+        />
         {/* Category badge */}
-        <span className="absolute top-2 right-2 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide rounded-full bg-white/20 text-white backdrop-blur-sm">
+        <span className="absolute top-2 right-2 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide rounded-full bg-black/40 text-white backdrop-blur-sm">
           {game.categoryLabel}
         </span>
       </div>
